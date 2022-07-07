@@ -1,0 +1,9 @@
+sample.txt = valid file
+Invalid files
+format - invalid formatting
+noParent - try to make add node to parent that doesn't exists
+twoRoot - two root nodes
+duplicate - duplicate nodes
+power - incorrect data type for power
+category - not actual existing category
+leafParent - try to make leaf node a parent

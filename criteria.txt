@@ -1,0 +1,113 @@
+Criteria 
+
+Containers
+I used a HashMap to store the power consumption by their categories. This made
+it easy to quickly access a particular value for displaying and for 
+calculations. The values could also be stored so that the information on how 
+much power consumption was used by each category could be represented. The 
+composite tree uses a Set to store the nodes that a node is attatched to. A Set
+was used as all the nodes would be unique. A HashMap is also used to store the
+options in the controller class. The controller class has different 
+implementation objects that inherit from an interface. These are stored in 
+a hasMap which allows access to an implementation by the key it is stored with.
+The key is the input from the command line. 
+
+Packages
+There are three packages electricityusage.control, electricityusage.model and
+electricityusage.view. The model package stores all the classes about real world
+concepts such as the city and subdivisions of the city which is stored in 
+Subdivision, CompositeSubdivision, LeafSubdivision. Power is also stored here as it 
+represents a real world conecept: electricity power usage. The class that reads
+and writes files is also in the model as it needs to know about the specific 
+implementations of the model classes to read and write valid data of those
+classes. 
+
+The view's responsibility is to implement the user interface which includes
+taking in and validating the command line arguments as well as display output
+to the user. The class UI.java takes in an array of command line arguments and
+passes it to the controller to be processed after it has been validated. 
+Results from the controller is passed to the view to display. 
+
+The control package intercts with both the model and the view and is 
+responsible for making decisions. The Controller class takes in input from the 
+view and uses it to access the objects that contain the right type of
+implementation. The controller stores an instance of the network from the model
+and makes decisions on what functions from the model to call based off the view's
+input. The controller returns output to be displayed in the view.
+
+Error handling
+UI.java validates the input and throws a custom excpetion, CommandLineException,
+if the input is not valid.The FileHandler class validates file input and output
+and throws a custom exception, FileInputException, if it is not valid. When
+an error is thrown it prints out a message to the user indicating what external
+input caused the error. If the user types an invalid command line argument, the
+view will throw and error which will be caught in the main class that called it.
+The program will then end after printing an error message to the user.
+
+Strategy pattern
+The strategy pattern was used in the control package to determine what type of
+implementation would be used based on command line input. The view calls
+control.doOption and passes the command line arguments. The view does not need
+to know what specific function to call from the controller or the model and 
+does not need to know how each command line argument affects the model. The
+Controller has two interfaces, one for input and one for output, that
+the subclasses with the actual implementation inherit from. This allows the 
+actual implementation to be stored in HashMap where the type of function can be
+called by the key which is a command line argument. 
+
+Composite pattern
+The composite pattern is used to represent the network. The CompositeSubdivision 
+and the LeafSubdivision classes inherit from the Subdivision class. 
+CompositeSubdivision objects are able to contain zero or mny Subdivision 
+objects. While the LeafSubdivision cannot contain any Subdivisions. 
+The composite pattern allows the objects to be represented as a single
+tree. All objects in the tree are able to use certain functions such as 
+displaying and getting the power consumption as they both inherit Subdivision
+and can be treated the same for some functions.
+
+UML
+The UML displays all the classes in their packages and how they interact with 
+each other. The view contains the class UI which uses CommandLineException 
+and calls the Controller class. The UML shows the inheritance in the strategy
+pattern in the control package and the composite pattern in the model package.
+The CompositeSubdivision has an aggregation relationshpi with Subdivision as
+a CompositeSubdivision can own some number of Subdivisions objects. There is an
+association relationship between UI and controller, and controller and 
+Subdivision as they have a lasting relationship but do not own each other. 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

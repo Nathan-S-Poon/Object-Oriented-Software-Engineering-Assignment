@@ -1,0 +1,480 @@
+
+            <html>
+            <head>
+                <meta charset="utf-8" />
+                <title>Assignment 1</title>
+                <style>@import url('https://fonts.googleapis.com/css2?family=Merriweather+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Merriweather&family=Merriweather+Sans&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inconsolata:wght@500&family=Merriweather&family=Merriweather+Sans&display=swap');
+
+@media screen {
+    html { background: #404040; }
+    body {
+        background: 
+    }
+}
+
+html {
+    font-family: 'Merriweather', serif;
+    line-height: 1.8em;
+    background: #404040;
+}
+
+body {
+    background: white;
+    max-width: 50em;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 4em;
+
+    counter-reset: section;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+h2, h3, h4, h5, h6 {
+    margin-top: 1.5em;
+}
+
+h2:not(.notnumbered) {
+    counter-reset: subsection;
+    counter-increment: section;
+}
+
+h2:not(.notnumbered)::before {
+    content: counter(section);
+    margin-right: 1em;
+}
+
+h3:not(.notnumbered) {
+    counter-reset: subsubsection;
+    counter-increment: subsection;
+}
+
+h3:not(.notnumbered)::before {
+    content: counter(section) "." counter(subsection);
+    margin-right: 1em;
+}
+
+h4:not(.notnumbered) {
+    counter-increment: subsubsection;
+}
+
+h4:not(.notnumbered)::before {
+    content: counter(section) "." counter(subsection) "." counter(subsubsection);
+    margin-right: 1em;
+}
+
+
+/* Code */
+
+code {
+    font-family: 'Inconsolata', monospace;
+}
+
+code .c1, code .cm { color: #c06000; } /* comments */
+code .kd, code .kt { color: blue; }    /* keywords */
+code .o, code .p   { color: red; }     /* symbols */
+code .s            { color: green; }   /* string literals */
+code .mi, code .mf, 
+code .mh, code .mb { color: #008080; } /* number literals */
+
+/*.command::before {
+    content: "$";
+}*/
+
+
+
+
+/* Boxes */
+
+.admonition {
+    border-radius: 5px;
+    border: 1px solid #606060;
+    padding: 0 1em;
+    margin: 1ex 0;
+}
+
+.admonition-title {
+    font-weight: bold;
+    font-family: 'Merriweather Sans', sans-serif;
+}
+
+.admonition.note {
+    border: 1px solid #0060c0;
+    background: #c0d8ff;
+}
+
+.admonition.warning {
+    border: 1px solid #c03030;
+    background: #ffc0c0;
+}
+
+
+/* Lists */
+
+ul > li::marker {
+    color: #0080ff;
+    content: '\25A0\00A0';
+}
+
+ul ul > li::marker {
+    color: #80c0ff;
+    content: '\25B8\00A0';
+}
+
+ol > li::marker {
+    color: #ff6000;
+    font-weight: bold;
+}
+
+li {
+    margin-top: 0.5em;
+    padding-left: 0.5em;
+}
+
+
+/* Tables */
+table {
+    border-collapse: collapse;
+    border-bottom: 1px solid black;
+}
+
+table thead tr {
+    background-color: #ffc080;
+    border-top: 1px solid black;
+    border-bottom: 1px solid black;
+}
+
+td, th {
+    padding: 0.5em 1em;
+    text-align: left;
+}
+
+tbody tr:nth-child(odd) {
+    background-color: white;
+}
+
+tbody tr:nth-child(even) {
+    background-color: #fff0e0;
+}
+
+
+/* Experimental */
+p::after, li::after, h1::after, h2::after, h3::after, h4::after, h5::after, h6::after {
+    position: absolute;
+/*     content: "12345678"; */
+/*     color: #fefefe; */
+}
+</style>
+            <style> 
+            h1::after, h2::after, h3::after, h4::after, h5::after, h6::after, p::after {                                                                                          
+                position: absolute; 
+                color: #fefefe; 
+                font-size: small; 
+                content: "19484949"; 
+            }
+            
+            .note p::after {                                                                                          
+                color: #00000000; 
+            }
+        </style></head>
+            <body><p style="color: red; text-align: center;">Please do not share this file. It has been fingerprinted with your ID (19484949).</p>
+                <h1>Assignment&emsp13;1</h1>
+                <div class="admonition preamble">
+<p><strong>Object&thinsp;&hairsp;Oriented&hairsp;&hairsp;&hairsp;&hairsp;Software&hairsp;&#x2006;Engineering</strong>&hairsp;&hairsp;&#x2006;(COMP2003/6005)</p>
+<p><strong>Due:</strong>&hairsp;&#x2006;Thursday&hairsp;&hairsp;&hairsp;&hairsp;22&hairsp;&#x2006;April,&hairsp;&hairsp;&hairsp;&hairsp;23:59<br />
+<strong>Weight:</strong>&emsp13;35%&thinsp;&hairsp;of&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;unit&hairsp;&hairsp;&#x2006;mark</p>
+</div>
+<p>This&hairsp;&#x2006;assignment&hairsp;&hairsp;&hairsp;&hairsp;will&hairsp;&#x2006;cover&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;first&thinsp;&hairsp;four&hairsp;&hairsp;&hairsp;&hairsp;topics&hairsp;&#x2006;in&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;unit,&hairsp;&hairsp;&hairsp;&hairsp;up&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;and&emsp13;including&thinsp;&hairsp;object&hairsp;&hairsp;&hairsp;&hairsp;dependencies.</p>
+<h2>Your&hairsp;&#x2006;Task</h2>
+<p>Design&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;implement&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;system&hairsp;&hairsp;&hairsp;&hairsp;described&emsp13;below&thinsp;&hairsp;under&hairsp;&hairsp;&hairsp;&hairsp;<a href="#problem_description">Problem&hairsp;&#x2006;Description</a>.&hairsp;&hairsp;&#x2006;Specifically:</p>
+<ul>
+<li>
+<p>Use&hairsp;&#x2006;either&hairsp;&hairsp;&hairsp;&hairsp;Java,&hairsp;&#x2006;C#,&hairsp;&hairsp;&hairsp;&hairsp;C++&emsp13;or&thinsp;&hairsp;Python&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;implement&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;system&hairsp;&hairsp;&hairsp;&hairsp;described.&hairsp;&#x2006;</p>
+<ul>
+<li>Your&hairsp;&hairsp;&hairsp;&hairsp;code&emsp13;should&thinsp;&hairsp;be&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;high&hairsp;&hairsp;&#x2006;quality,&hairsp;&#x2006;with&hairsp;&hairsp;&hairsp;&hairsp;consistent&hairsp;&#x2006;formatting&hairsp;&hairsp;&hairsp;&hairsp;and&emsp13;meaningful&thinsp;&hairsp;commenting.</li>
+<li>If&hairsp;&hairsp;&hairsp;&hairsp;using&hairsp;&#x2006;Java,&hairsp;&hairsp;&#x2006;it&hairsp;&#x2006;is&hairsp;&hairsp;&hairsp;&hairsp;highly&hairsp;&#x2006;recommended&hairsp;&hairsp;&hairsp;&hairsp;that&emsp13;you&thinsp;&hairsp;use&hairsp;&hairsp;&hairsp;&hairsp;Gradle&hairsp;&#x2006;or&hairsp;&hairsp;&#x2006;Ant.</li>
+<li>If&hairsp;&#x2006;using&hairsp;&hairsp;&hairsp;&hairsp;C#,&hairsp;&#x2006;please&hairsp;&hairsp;&hairsp;&hairsp;only&emsp13;use&thinsp;&hairsp;<a href="https://www.mono-project.com/docs/about-mono/languages/csharp/">features&hairsp;&hairsp;&hairsp;&hairsp;supported&hairsp;&#x2006;by&hairsp;&hairsp;&#x2006;Mono</a>.</li>
+<li>If&hairsp;&#x2006;using&hairsp;&hairsp;&hairsp;&hairsp;Python,&hairsp;&#x2006;please&hairsp;&hairsp;&hairsp;&hairsp;use&emsp13;<a href="https://docs.python.org/3/library/typing.html">type&thinsp;&hairsp;hinting</a>&hairsp;&hairsp;&hairsp;&hairsp;for&hairsp;&#x2006;all&hairsp;&hairsp;&#x2006;method/function&hairsp;&#x2006;parameters&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;return&hairsp;&hairsp;&hairsp;&hairsp;types.</li>
+</ul>
+</li>
+<li>
+<p>In&emsp13;your&thinsp;&hairsp;design,&hairsp;&hairsp;&hairsp;&hairsp;use&hairsp;&#x2006;(a)&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;Strategy&hairsp;&hairsp;&hairsp;&hairsp;Pattern&hairsp;&#x2006;and/or&hairsp;&hairsp;&hairsp;&hairsp;Template&emsp13;Method&thinsp;&hairsp;Pattern&hairsp;&hairsp;&hairsp;&hairsp;(one&hairsp;&#x2006;or&hairsp;&hairsp;&#x2006;both),&hairsp;&#x2006;and&hairsp;&hairsp;&hairsp;&hairsp;(b)&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;Composite&emsp13;Pattern.</p>
+<ul>
+<li>You&thinsp;&hairsp;may&hairsp;&hairsp;&hairsp;&hairsp;<em>also</em>&hairsp;&#x2006;use&hairsp;&hairsp;&#x2006;other&hairsp;&#x2006;patterns&hairsp;&hairsp;&hairsp;&hairsp;if&hairsp;&#x2006;you&hairsp;&hairsp;&hairsp;&hairsp;wish&emsp13;(whether&thinsp;&hairsp;or&hairsp;&hairsp;&hairsp;&hairsp;not&hairsp;&#x2006;they&hairsp;&hairsp;&#x2006;are&hairsp;&#x2006;described&hairsp;&hairsp;&hairsp;&hairsp;in&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;unit),&emsp13;but&thinsp;&hairsp;that&hairsp;&hairsp;&hairsp;&hairsp;is&hairsp;&#x2006;purely&hairsp;&hairsp;&#x2006;optional.</li>
+</ul>
+</li>
+<li>
+<p>Provide&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;<code>README.txt</code>&hairsp;&#x2006;that&hairsp;&hairsp;&hairsp;&hairsp;briefly&emsp13;explains&thinsp;&hairsp;how&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;compile&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;run&hairsp;&hairsp;&hairsp;&hairsp;your&hairsp;&#x2006;code,&hairsp;&hairsp;&hairsp;&hairsp;if&emsp13;there&thinsp;&hairsp;are&hairsp;&hairsp;&hairsp;&hairsp;any&hairsp;&#x2006;facets&hairsp;&hairsp;&#x2006;of&hairsp;&#x2006;this&hairsp;&hairsp;&hairsp;&hairsp;that&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;marker&emsp13;needs&thinsp;&hairsp;to&hairsp;&hairsp;&hairsp;&hairsp;be&hairsp;&#x2006;aware&hairsp;&hairsp;&#x2006;of.</p>
+</li>
+<li>
+<p>Provide&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;UML&hairsp;&#x2006;class&hairsp;&hairsp;&hairsp;&hairsp;diagram&emsp13;giving&thinsp;&hairsp;a&hairsp;&hairsp;&hairsp;&hairsp;structural&hairsp;&#x2006;overview&hairsp;&hairsp;&#x2006;of&hairsp;&#x2006;your&hairsp;&hairsp;&hairsp;&hairsp;design.&hairsp;&#x2006;</p>
+<ul>
+<li>Your&hairsp;&hairsp;&hairsp;&hairsp;UML&emsp13;must&thinsp;&hairsp;accurately&hairsp;&hairsp;&hairsp;&hairsp;represent&hairsp;&#x2006;your&hairsp;&hairsp;&#x2006;design.</li>
+<li>Use&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;proper&hairsp;&#x2006;tool;&hairsp;&hairsp;&hairsp;&hairsp;e.g.,&emsp13;<a href="https://www.umlet.com/">Umlet</a>,&thinsp;&hairsp;<a href="https://draw.io">draw.io</a>,&hairsp;&hairsp;&hairsp;&hairsp;<a href="https://plantuml.com">PlantUML</a>&hairsp;&#x2006;or&hairsp;&hairsp;&#x2006;others.&hairsp;&#x2006;Avoid&hairsp;&hairsp;&hairsp;&hairsp;tools&hairsp;&#x2006;that&hairsp;&hairsp;&hairsp;&hairsp;have&emsp13;no&thinsp;&hairsp;explicit&hairsp;&hairsp;&hairsp;&hairsp;support&hairsp;&#x2006;for&hairsp;&hairsp;&#x2006;UML.</li>
+<li>Make&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;diagram&hairsp;&#x2006;layout&hairsp;&hairsp;&hairsp;&hairsp;as&emsp13;neat&thinsp;&hairsp;and&hairsp;&hairsp;&hairsp;&hairsp;logical&hairsp;&#x2006;as&hairsp;&hairsp;&#x2006;practical.&hairsp;&#x2006;Minimise&hairsp;&hairsp;&hairsp;&hairsp;crossing&hairsp;&#x2006;lines.</li>
+<li>If&hairsp;&hairsp;&hairsp;&hairsp;in&emsp13;doubt&thinsp;&hairsp;as&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;whether&hairsp;&hairsp;&#x2006;or&hairsp;&#x2006;not&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;represent&hairsp;&hairsp;&hairsp;&hairsp;certain&emsp13;things&thinsp;&hairsp;on&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;diagram,&hairsp;&hairsp;&#x2006;err&hairsp;&#x2006;on&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;side&hairsp;&hairsp;&hairsp;&hairsp;of&emsp13;more&thinsp;&hairsp;detail.&hairsp;&hairsp;&hairsp;&hairsp;But&hairsp;&#x2006;it&hairsp;&hairsp;&#x2006;is&hairsp;&#x2006;generally&hairsp;&hairsp;&hairsp;&hairsp;unnecessary&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;show&emsp13;constructors&thinsp;&hairsp;and&hairsp;&hairsp;&hairsp;&hairsp;(in&hairsp;&#x2006;most&hairsp;&hairsp;&#x2006;cases)&hairsp;&#x2006;usage&hairsp;&hairsp;&hairsp;&hairsp;dependencies.</li>
+</ul>
+</li>
+<li>
+<p>Provide&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;response&emsp13;to&thinsp;&hairsp;each&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;the&hairsp;&hairsp;&#x2006;<a href="#marking_criteria">marking&hairsp;&#x2006;criteria</a>.&hairsp;&hairsp;&hairsp;&hairsp;</p>
+<ul>
+<li>Record&hairsp;&#x2006;this&hairsp;&hairsp;&hairsp;&hairsp;in&emsp13;a&thinsp;&hairsp;file&hairsp;&hairsp;&hairsp;&hairsp;called&hairsp;&#x2006;<code>criteria.txt</code>.</li>
+<li>See&hairsp;&hairsp;&#x2006;below&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;more&hairsp;&#x2006;information.</li>
+</ul>
+</li>
+</ul>
+<h2>Submission</h2>
+<p>Submit&hairsp;&hairsp;&hairsp;&hairsp;all&emsp13;of&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;above,&hairsp;&#x2006;plus&hairsp;&hairsp;&#x2006;a&hairsp;&#x2006;signed&hairsp;&hairsp;&hairsp;&hairsp;declaration&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;originality,&emsp13;to&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;appropriate&hairsp;&#x2006;area&hairsp;&hairsp;&#x2006;on&hairsp;&#x2006;Blackboard.&hairsp;&hairsp;&hairsp;&hairsp;Include&hairsp;&#x2006;everything&hairsp;&hairsp;&hairsp;&hairsp;in&emsp13;a&thinsp;&hairsp;single&hairsp;&hairsp;&hairsp;&hairsp;.zip/.tar.gz&hairsp;&#x2006;file&hairsp;&hairsp;&#x2006;(<em>please&hairsp;&#x2006;avoid</em>&hairsp;&hairsp;&hairsp;&hairsp;.rar,&hairsp;&#x2006;.zipx&hairsp;&hairsp;&hairsp;&hairsp;or&emsp13;.7z).&thinsp;&hairsp;You&hairsp;&hairsp;&hairsp;&hairsp;do&hairsp;&#x2006;not&hairsp;&hairsp;&#x2006;need&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;include&hairsp;&#x2006;any&hairsp;&hairsp;&hairsp;&hairsp;compiled&emsp13;code.</p>
+<p>You&thinsp;&hairsp;must&hairsp;&hairsp;&hairsp;&hairsp;verify&hairsp;&#x2006;that&hairsp;&hairsp;&#x2006;your&hairsp;&#x2006;submission&hairsp;&hairsp;&hairsp;&hairsp;is&hairsp;&#x2006;correct&hairsp;&hairsp;&hairsp;&hairsp;and&emsp13;not&thinsp;&hairsp;corrupted.&hairsp;&hairsp;&hairsp;&hairsp;Once&hairsp;&#x2006;you&hairsp;&hairsp;&#x2006;have&hairsp;&#x2006;submitted,&hairsp;&hairsp;&hairsp;&hairsp;please&hairsp;&#x2006;download&hairsp;&hairsp;&hairsp;&hairsp;your&emsp13;own&thinsp;&hairsp;submission&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;thoroughly&hairsp;&hairsp;&#x2006;check&hairsp;&#x2006;that&hairsp;&hairsp;&hairsp;&hairsp;it&hairsp;&#x2006;is&hairsp;&hairsp;&hairsp;&hairsp;intact.&emsp13;You&thinsp;&hairsp;may&hairsp;&hairsp;&hairsp;&hairsp;make&hairsp;&#x2006;multiple&hairsp;&hairsp;&#x2006;submissions.&hairsp;&#x2006;Only&hairsp;&hairsp;&hairsp;&hairsp;your&hairsp;&#x2006;last&hairsp;&hairsp;&hairsp;&hairsp;one&emsp13;will&thinsp;&hairsp;be&hairsp;&hairsp;&hairsp;&hairsp;marked.&hairsp;&#x2006;</p>
+<h2 id="marking_criteria">Marking&hairsp;&hairsp;&#x2006;Criteria</h2>
+<p>The&hairsp;&#x2006;assignment&hairsp;&hairsp;&hairsp;&hairsp;will&hairsp;&#x2006;be&hairsp;&hairsp;&hairsp;&hairsp;marked&emsp13;out&thinsp;&hairsp;of&hairsp;&hairsp;&hairsp;&hairsp;30.&hairsp;&#x2006;There&hairsp;&hairsp;&#x2006;are&hairsp;&#x2006;six&hairsp;&hairsp;&hairsp;&hairsp;marking&hairsp;&#x2006;criteria,&hairsp;&hairsp;&hairsp;&hairsp;each&emsp13;worth&thinsp;&hairsp;5&hairsp;&hairsp;&hairsp;&hairsp;marks,&hairsp;&#x2006;as&hairsp;&hairsp;&#x2006;follows:</p>
+<ol>
+<li>
+<p>Appropriate&hairsp;&#x2006;use&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;containers.</p>
+</li>
+<li>
+<p>Clear&hairsp;&hairsp;&hairsp;&hairsp;and&emsp13;distinct&thinsp;&hairsp;package/class/interface/method&hairsp;&hairsp;&hairsp;&hairsp;responsibilities.</p>
+<ul>
+<li>It&hairsp;&#x2006;is&hairsp;&hairsp;&#x2006;required&hairsp;&#x2006;that&hairsp;&hairsp;&hairsp;&hairsp;you&hairsp;&#x2006;create&hairsp;&hairsp;&hairsp;&hairsp;and&emsp13;use&thinsp;&hairsp;packages&hairsp;&hairsp;&hairsp;&hairsp;or&hairsp;&#x2006;namespaces,&hairsp;&hairsp;&#x2006;depending&hairsp;&#x2006;on&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;language.</li>
+<li>Packages,&hairsp;&hairsp;&hairsp;&hairsp;classes,&emsp13;interfaces&thinsp;&hairsp;and&hairsp;&hairsp;&hairsp;&hairsp;methods&hairsp;&#x2006;must&hairsp;&hairsp;&#x2006;all&hairsp;&#x2006;have&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;clear&hairsp;&hairsp;&hairsp;&hairsp;logical&emsp13;purpose.</li>
+<li>Packages,&thinsp;&hairsp;classes,&hairsp;&hairsp;&hairsp;&hairsp;interfaces&hairsp;&#x2006;and&hairsp;&hairsp;&#x2006;methods&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;be&hairsp;&#x2006;appropriately-named,&hairsp;&hairsp;&hairsp;&hairsp;in&emsp13;light&thinsp;&hairsp;of&hairsp;&hairsp;&hairsp;&hairsp;what&hairsp;&#x2006;they&hairsp;&hairsp;&#x2006;contain.</li>
+</ul>
+</li>
+<li>
+<p>Appropriate&hairsp;&#x2006;error&hairsp;&hairsp;&hairsp;&hairsp;handling.</p>
+<ul>
+<li>For&hairsp;&#x2006;all&hairsp;&hairsp;&hairsp;&hairsp;possible&emsp13;user&thinsp;&hairsp;errors,&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;program&hairsp;&hairsp;&#x2006;must&hairsp;&#x2006;take&hairsp;&hairsp;&hairsp;&hairsp;appropriate&hairsp;&#x2006;alternative&hairsp;&hairsp;&hairsp;&hairsp;action,&emsp13;and&thinsp;&hairsp;should&hairsp;&hairsp;&hairsp;&hairsp;<em>not</em>&hairsp;&#x2006;simply&hairsp;&hairsp;&#x2006;abort&hairsp;&#x2006;with&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;stack&hairsp;&hairsp;&hairsp;&hairsp;trace.&emsp13;<br />
+&thinsp;&hairsp;(A&hairsp;&hairsp;&hairsp;&hairsp;user&hairsp;&#x2006;error&hairsp;&hairsp;&#x2006;means&hairsp;&#x2006;an&hairsp;&hairsp;&hairsp;&hairsp;error&hairsp;&#x2006;caused&hairsp;&hairsp;&hairsp;&hairsp;by&emsp13;something&thinsp;&hairsp;outside&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;program&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;platform&hairsp;&#x2006;on&hairsp;&hairsp;&hairsp;&hairsp;which&emsp13;it&thinsp;&hairsp;runs.)&hairsp;&hairsp;&hairsp;&hairsp;</li>
+<li>The&hairsp;&#x2006;program&hairsp;&hairsp;&#x2006;must&hairsp;&#x2006;<em>not</em>&hairsp;&hairsp;&hairsp;&hairsp;treat&hairsp;&#x2006;internal&hairsp;&hairsp;&hairsp;&hairsp;errors&emsp13;(such&thinsp;&hairsp;as&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;<code>NullPointerException</code>)&hairsp;&hairsp;&#x2006;as&hairsp;&#x2006;if&hairsp;&hairsp;&hairsp;&hairsp;they&hairsp;&#x2006;were&hairsp;&hairsp;&hairsp;&hairsp;a&emsp13;user&thinsp;&hairsp;errors.&hairsp;&hairsp;&hairsp;&hairsp;Ideally&hairsp;&#x2006;there&hairsp;&hairsp;&#x2006;should&hairsp;&#x2006;be&hairsp;&hairsp;&hairsp;&hairsp;no&hairsp;&#x2006;internal&hairsp;&hairsp;&hairsp;&hairsp;errors,&emsp13;but&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;program&hairsp;&#x2006;should&hairsp;&hairsp;&#x2006;be&hairsp;&#x2006;written&hairsp;&hairsp;&hairsp;&hairsp;such&hairsp;&#x2006;that,&hairsp;&hairsp;&hairsp;&hairsp;<em>if&emsp13;they&thinsp;&hairsp;did&hairsp;&hairsp;&hairsp;&hairsp;happen</em>,&hairsp;&#x2006;they&hairsp;&hairsp;&#x2006;<em>would</em>&hairsp;&#x2006;abort&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;program.</li>
+<li>The&hairsp;&hairsp;&hairsp;&hairsp;program&emsp13;must&thinsp;&hairsp;use&hairsp;&hairsp;&hairsp;&hairsp;exception&hairsp;&#x2006;handling&hairsp;&hairsp;&#x2006;mechanisms&hairsp;&#x2006;appropriately&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;do&hairsp;&hairsp;&hairsp;&hairsp;both&emsp13;of&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;above.</li>
+</ul>
+</li>
+<li>
+<p>Appropriate&hairsp;&#x2006;use&hairsp;&hairsp;&#x2006;of&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;Strategy&hairsp;&#x2006;Pattern&hairsp;&hairsp;&hairsp;&hairsp;and/or&emsp13;Template&thinsp;&hairsp;Method&hairsp;&hairsp;&hairsp;&hairsp;Pattern.</p>
+<p>We&hairsp;&#x2006;are&hairsp;&hairsp;&#x2006;<em>not&hairsp;&#x2006;just</em>&hairsp;&hairsp;&hairsp;&hairsp;interested&hairsp;&#x2006;in&hairsp;&hairsp;&hairsp;&hairsp;whether&emsp13;you&thinsp;&hairsp;can&hairsp;&hairsp;&hairsp;&hairsp;mechanically&hairsp;&#x2006;implement&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;parts&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;these&hairsp;&hairsp;&hairsp;&hairsp;patterns.&emsp13;You&thinsp;&hairsp;must&hairsp;&hairsp;&hairsp;&hairsp;use&hairsp;&#x2006;one&hairsp;&hairsp;&#x2006;(or&hairsp;&#x2006;both&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;them)&hairsp;&hairsp;&hairsp;&hairsp;for&emsp13;a&thinsp;&hairsp;practical&hairsp;&hairsp;&hairsp;&hairsp;purpose.&hairsp;&#x2006;Is&hairsp;&hairsp;&#x2006;it&hairsp;&#x2006;solving&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;problem?&hairsp;&hairsp;&hairsp;&hairsp;What&emsp13;is&thinsp;&hairsp;it&hairsp;&hairsp;&hairsp;&hairsp;decoupling?&hairsp;&#x2006;Are&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;subclasses&hairsp;&hairsp;&hairsp;&hairsp;actually&hairsp;&#x2006;doing&hairsp;&hairsp;&hairsp;&hairsp;substantively&emsp13;different&thinsp;&hairsp;things?</p>
+<p>Be&hairsp;&hairsp;&hairsp;&hairsp;warned&hairsp;&#x2006;against:</p>
+<ul>
+<li>Creating&hairsp;&hairsp;&#x2006;subclass&hairsp;&#x2006;objects&hairsp;&hairsp;&hairsp;&hairsp;in&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;same&emsp13;place&thinsp;&hairsp;you&rsquo;re&hairsp;&hairsp;&hairsp;&hairsp;calling&hairsp;&#x2006;them.</li>
+<li>Querying&hairsp;&hairsp;&#x2006;which&hairsp;&#x2006;subclass&hairsp;&hairsp;&hairsp;&hairsp;you&rsquo;re&hairsp;&#x2006;dealing&hairsp;&hairsp;&hairsp;&hairsp;with.</li>
+</ul>
+<p>The&emsp13;purpose&thinsp;&hairsp;of&hairsp;&hairsp;&hairsp;&hairsp;Strategy/Template&hairsp;&#x2006;Method&hairsp;&hairsp;&#x2006;collapses&hairsp;&#x2006;if&hairsp;&hairsp;&hairsp;&hairsp;you&hairsp;&#x2006;do&hairsp;&hairsp;&hairsp;&hairsp;these&emsp13;things.</p>
+</li>
+<li>
+<p>Appropriate&thinsp;&hairsp;use&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;the&hairsp;&hairsp;&#x2006;Composite&hairsp;&#x2006;Pattern.</p>
+<p>Similar&hairsp;&hairsp;&hairsp;&hairsp;advice&hairsp;&#x2006;applies&hairsp;&hairsp;&hairsp;&hairsp;to&emsp13;the&thinsp;&hairsp;above.</p>
+</li>
+<li>
+<p>Clear&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;correct&hairsp;&hairsp;&#x2006;UML.</p>
+</li>
+</ol>
+<h3>Does&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;program&hairsp;&#x2006;run&hairsp;&hairsp;&hairsp;&hairsp;correctly?</h3>
+<p>This&emsp13;isn&rsquo;t&thinsp;&hairsp;strictly&hairsp;&hairsp;&hairsp;&hairsp;one&hairsp;&#x2006;of&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;six&hairsp;&hairsp;&hairsp;&hairsp;criteria,&hairsp;&#x2006;but&hairsp;&hairsp;&hairsp;&hairsp;rather&emsp13;a&thinsp;&hairsp;cross-cutting&hairsp;&hairsp;&hairsp;&hairsp;concern&hairsp;&#x2006;that&hairsp;&hairsp;&#x2006;affects&hairsp;&#x2006;all&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;them.</p>
+<p>The&hairsp;&hairsp;&hairsp;&hairsp;marker&emsp13;will&thinsp;&hairsp;attempt&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;compile&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;run&hairsp;&hairsp;&hairsp;&hairsp;your&hairsp;&#x2006;code.&hairsp;&hairsp;&hairsp;&hairsp;If&emsp13;it&thinsp;&hairsp;does&hairsp;&hairsp;&hairsp;&hairsp;not&hairsp;&#x2006;work&hairsp;&hairsp;&#x2006;correctly,&hairsp;&#x2006;this&hairsp;&hairsp;&hairsp;&hairsp;will&hairsp;&#x2006;have&hairsp;&hairsp;&hairsp;&hairsp;implications&emsp13;for&thinsp;&hairsp;how&hairsp;&hairsp;&hairsp;&hairsp;we&hairsp;&#x2006;assess&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;other&hairsp;&hairsp;&hairsp;&hairsp;criteria.</p>
+<h3>Your&hairsp;&#x2006;Responses&hairsp;&hairsp;&hairsp;&hairsp;to&emsp13;the&thinsp;&hairsp;Criteria</h3>
+<p>You&hairsp;&hairsp;&hairsp;&hairsp;must&hairsp;&#x2006;provide&hairsp;&hairsp;&#x2006;a&hairsp;&#x2006;response&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;each&hairsp;&hairsp;&hairsp;&hairsp;of&emsp13;the&thinsp;&hairsp;six&hairsp;&hairsp;&hairsp;&hairsp;critera,&hairsp;&#x2006;as&hairsp;&hairsp;&#x2006;part&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;your&hairsp;&#x2006;submission.&hairsp;&hairsp;&hairsp;&hairsp;That&emsp13;is,&thinsp;&hairsp;for&hairsp;&hairsp;&hairsp;&hairsp;each&hairsp;&#x2006;individual&hairsp;&hairsp;&#x2006;criterion,&hairsp;&#x2006;write&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;paragraph&hairsp;&hairsp;&hairsp;&hairsp;or&emsp13;two&thinsp;&hairsp;justifying&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;choices&hairsp;&hairsp;&#x2006;you&hairsp;&#x2006;have&hairsp;&hairsp;&hairsp;&hairsp;made.&hairsp;&#x2006;Include&hairsp;&hairsp;&hairsp;&hairsp;all&emsp13;your&thinsp;&hairsp;discussion&hairsp;&hairsp;&hairsp;&hairsp;in&hairsp;&#x2006;<code>criteria.txt</code>.</p>
+<p>This&hairsp;&hairsp;&#x2006;fulfils&hairsp;&#x2006;two&hairsp;&hairsp;&hairsp;&hairsp;purposes:</p>
+<ol>
+<li>We&hairsp;&#x2006;want&hairsp;&hairsp;&hairsp;&hairsp;to&emsp13;know&thinsp;&hairsp;that&hairsp;&hairsp;&hairsp;&hairsp;you&hairsp;&#x2006;can&hairsp;&hairsp;&#x2006;articulate,&hairsp;&#x2006;in&hairsp;&hairsp;&hairsp;&hairsp;plain&hairsp;&#x2006;English,&hairsp;&hairsp;&hairsp;&hairsp;what&emsp13;you&thinsp;&hairsp;are&hairsp;&hairsp;&hairsp;&hairsp;doing.&hairsp;&#x2006;This&hairsp;&hairsp;&#x2006;is&hairsp;&#x2006;part&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;task.</li>
+<li>If&emsp13;you&thinsp;&hairsp;do&hairsp;&hairsp;&hairsp;&hairsp;something&hairsp;&#x2006;unusual/unorthodox,&hairsp;&hairsp;&#x2006;this&hairsp;&#x2006;is&hairsp;&hairsp;&hairsp;&hairsp;your&hairsp;&#x2006;opportunity&hairsp;&hairsp;&hairsp;&hairsp;to&emsp13;justify&thinsp;&hairsp;it.</li>
+</ol>
+<p>One&hairsp;&hairsp;&hairsp;&hairsp;way&hairsp;&#x2006;to&hairsp;&hairsp;&#x2006;think&hairsp;&#x2006;about&hairsp;&hairsp;&hairsp;&hairsp;what&hairsp;&#x2006;you&rsquo;re&hairsp;&hairsp;&hairsp;&hairsp;doing&emsp13;here&thinsp;&hairsp;is&hairsp;&hairsp;&hairsp;&hairsp;this:&hairsp;&#x2006;imagine&hairsp;&hairsp;&#x2006;that&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;marker&hairsp;&#x2006;is&hairsp;&hairsp;&hairsp;&hairsp;slightly&emsp13;sceptical&thinsp;&hairsp;about&hairsp;&hairsp;&hairsp;&hairsp;whether&hairsp;&#x2006;to&hairsp;&hairsp;&#x2006;award&hairsp;&#x2006;you&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;marks&hairsp;&hairsp;&hairsp;&hairsp;for&emsp13;a&thinsp;&hairsp;given&hairsp;&hairsp;&hairsp;&hairsp;criterion.&hairsp;&#x2006;What&hairsp;&hairsp;&#x2006;would&hairsp;&#x2006;you&hairsp;&hairsp;&hairsp;&hairsp;say&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;convince&emsp13;them?</p>
+<p>Make&thinsp;&hairsp;your&hairsp;&hairsp;&hairsp;&hairsp;responses&hairsp;&#x2006;concise&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;to-the-point.&hairsp;&hairsp;&hairsp;&hairsp;Address&hairsp;&#x2006;each&hairsp;&hairsp;&hairsp;&hairsp;criterion&emsp13;separately.</p>
+<h2 id="problem_description">Problem&thinsp;&hairsp;Description</h2>
+<p>Your&hairsp;&hairsp;&hairsp;&hairsp;application&hairsp;&#x2006;should&hairsp;&hairsp;&#x2006;model&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;city&rsquo;s&hairsp;&#x2006;electricity&hairsp;&hairsp;&hairsp;&hairsp;usage.&emsp13;It&thinsp;&hairsp;must&hairsp;&hairsp;&hairsp;&hairsp;first&hairsp;&#x2006;either&hairsp;&hairsp;&#x2006;<em>read&hairsp;&#x2006;in</em>&hairsp;&hairsp;&hairsp;&hairsp;OR&hairsp;&#x2006;<em>randomly&hairsp;&hairsp;&hairsp;&hairsp;generate</em>&emsp13;a&thinsp;&hairsp;set&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;data&hairsp;&hairsp;&#x2006;representing&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;structure&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;network.&thinsp;&hairsp;Then&hairsp;&hairsp;&hairsp;&hairsp;it&hairsp;&#x2006;must&hairsp;&hairsp;&#x2006;either&hairsp;&#x2006;<em>write&hairsp;&hairsp;&hairsp;&hairsp;out</em>&hairsp;&#x2006;OR&hairsp;&hairsp;&hairsp;&hairsp;<em>display</em>&emsp13;the&thinsp;&hairsp;network.&hairsp;&hairsp;&hairsp;&hairsp;The&hairsp;&#x2006;user&hairsp;&hairsp;&#x2006;chooses&hairsp;&#x2006;which&hairsp;&hairsp;&hairsp;&hairsp;actions&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;perform&emsp13;via&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;command-line.</p>
+<h3>Data</h3>
+<p>The&hairsp;&#x2006;program&hairsp;&hairsp;&#x2006;must&hairsp;&#x2006;manage&hairsp;&hairsp;&hairsp;&hairsp;an&hairsp;&#x2006;object&hairsp;&hairsp;&hairsp;&hairsp;structure&emsp13;representing&thinsp;&hairsp;a&hairsp;&hairsp;&hairsp;&hairsp;hierarchical&hairsp;&#x2006;electricity&hairsp;&hairsp;&#x2006;network.</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>For&hairsp;&#x2006;anyone&hairsp;&hairsp;&hairsp;&hairsp;who&hairsp;&#x2006;actually&hairsp;&hairsp;&hairsp;&hairsp;knows&emsp13;about&thinsp;&hairsp;such&hairsp;&hairsp;&hairsp;&hairsp;things,&hairsp;&#x2006;this&hairsp;&hairsp;&#x2006;is&hairsp;&#x2006;almost&hairsp;&hairsp;&hairsp;&hairsp;certainly&hairsp;&#x2006;<em>not</em>&hairsp;&hairsp;&hairsp;&hairsp;how&emsp13;a&thinsp;&hairsp;real-world&hairsp;&hairsp;&hairsp;&hairsp;electricity&hairsp;&#x2006;network&hairsp;&hairsp;&#x2006;actually&hairsp;&#x2006;works,&hairsp;&hairsp;&hairsp;&hairsp;so&hairsp;&#x2006;just&hairsp;&hairsp;&hairsp;&hairsp;pretend&emsp13;we&rsquo;re&thinsp;&hairsp;in&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;fantasy&hairsp;&hairsp;&#x2006;world!</p>
+</div>
+<p>Our&hairsp;&#x2006;network&hairsp;&hairsp;&hairsp;&hairsp;is&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;tree.&emsp13;At&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;root&hairsp;&#x2006;is&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;whole&hairsp;&hairsp;&hairsp;&hairsp;city.&hairsp;&#x2006;Each&hairsp;&hairsp;&hairsp;&hairsp;non-root&emsp13;node&thinsp;&hairsp;represents&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;part&hairsp;&hairsp;&#x2006;of&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;city;&hairsp;&#x2006;e.g.,&hairsp;&hairsp;&hairsp;&hairsp;a&emsp13;district,&thinsp;&hairsp;suburb,&hairsp;&hairsp;&hairsp;&hairsp;street,&hairsp;&#x2006;building,&hairsp;&hairsp;&#x2006;floor,&hairsp;&#x2006;or&hairsp;&hairsp;&hairsp;&hairsp;some&hairsp;&#x2006;other&hairsp;&hairsp;&hairsp;&hairsp;kind&emsp13;of&thinsp;&hairsp;subdivision.&hairsp;&hairsp;&hairsp;&hairsp;The&hairsp;&#x2006;tree&rsquo;s&hairsp;&hairsp;&#x2006;leaf&hairsp;&#x2006;nodes&hairsp;&hairsp;&hairsp;&hairsp;are&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;course&emsp13;the&thinsp;&hairsp;smallest&hairsp;&hairsp;&hairsp;&hairsp;meaningful&hairsp;&#x2006;parts&hairsp;&hairsp;&#x2006;of&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;network&hairsp;&#x2006;(say,&hairsp;&hairsp;&hairsp;&hairsp;individual&emsp13;houses,&thinsp;&hairsp;or&hairsp;&hairsp;&hairsp;&hairsp;appartments,&hairsp;&#x2006;or&hairsp;&hairsp;&#x2006;floors&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;large&hairsp;&#x2006;buildings,&hairsp;&hairsp;&hairsp;&hairsp;though&emsp13;there&rsquo;s&thinsp;&hairsp;no&hairsp;&hairsp;&hairsp;&hairsp;difference&hairsp;&#x2006;between&hairsp;&hairsp;&#x2006;these&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;our&hairsp;&#x2006;purposes).</p>
+<p>There&hairsp;&hairsp;&hairsp;&hairsp;is&emsp13;no&thinsp;&hairsp;limit&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;the&hairsp;&hairsp;&#x2006;depth&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;tree,&hairsp;&hairsp;&hairsp;&hairsp;or&emsp13;to&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;number&hairsp;&#x2006;of&hairsp;&hairsp;&#x2006;child&hairsp;&#x2006;nodes&hairsp;&hairsp;&hairsp;&hairsp;each&hairsp;&#x2006;node&hairsp;&hairsp;&hairsp;&hairsp;may&emsp13;have.&thinsp;&hairsp;A&hairsp;&hairsp;&hairsp;&hairsp;tree&hairsp;&#x2006;containing&hairsp;&hairsp;&#x2006;just&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;single&hairsp;&#x2006;root&hairsp;&hairsp;&hairsp;&hairsp;node&emsp13;is&thinsp;&hairsp;also&hairsp;&hairsp;&hairsp;&hairsp;valid.</p>
+<p>Each&hairsp;&#x2006;node&hairsp;&hairsp;&#x2006;in&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;tree&hairsp;&#x2006;has&hairsp;&hairsp;&hairsp;&hairsp;a&emsp13;name&thinsp;&hairsp;consisting&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;letter&hairsp;&hairsp;&#x2006;and/or&hairsp;&#x2006;digit&hairsp;&hairsp;&hairsp;&hairsp;characters&hairsp;&#x2006;(no&hairsp;&hairsp;&hairsp;&hairsp;spaces&emsp13;or&thinsp;&hairsp;other&hairsp;&hairsp;&hairsp;&hairsp;symbols),&hairsp;&#x2006;and&hairsp;&hairsp;&#x2006;all&hairsp;&#x2006;nodes&hairsp;&hairsp;&hairsp;&hairsp;must&hairsp;&#x2006;have&hairsp;&hairsp;&hairsp;&hairsp;different&emsp13;names.&thinsp;&hairsp;Each&hairsp;&hairsp;&hairsp;&hairsp;<em>leaf</em>&hairsp;&#x2006;node&hairsp;&hairsp;&#x2006;also&hairsp;&#x2006;has&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;series&hairsp;&hairsp;&hairsp;&hairsp;of&emsp13;&ldquo;power&thinsp;&hairsp;consumption&rdquo;&hairsp;&hairsp;&hairsp;&hairsp;numbers&hairsp;&#x2006;(non-negative&hairsp;&hairsp;&#x2006;real&hairsp;&#x2006;numbers),&hairsp;&hairsp;&hairsp;&hairsp;one&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;each&emsp13;of&thinsp;&hairsp;several&hairsp;&hairsp;&hairsp;&hairsp;&ldquo;categories&rdquo;.&hairsp;&#x2006;A&hairsp;&hairsp;&#x2006;category&hairsp;&#x2006;is&hairsp;&hairsp;&hairsp;&hairsp;one&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;following:</p>
+<table>
+<thead>
+<tr>
+<th>Category</th>
+<th>Abbreviation</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Weekday morning</td>
+<td>dm</td>
+</tr>
+<tr>
+<td>Weekday afternoon</td>
+<td>da</td>
+</tr>
+<tr>
+<td>Weekday evening</td>
+<td>de</td>
+</tr>
+<tr>
+<td>Weekend morning</td>
+<td>em</td>
+</tr>
+<tr>
+<td>Weekend afternoon</td>
+<td>ea</td>
+</tr>
+<tr>
+<td>Weekend evening</td>
+<td>ee</td>
+</tr>
+<tr>
+<td>Heatwave</td>
+<td>h</td>
+</tr>
+<tr>
+<td>Special event</td>
+<td>s</td>
+</tr>
+</tbody>
+</table>
+<p>The&thinsp;&hairsp;abbreviations&hairsp;&hairsp;&hairsp;&hairsp;will&hairsp;&#x2006;be&hairsp;&hairsp;&#x2006;used&hairsp;&#x2006;in&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;file&hairsp;&hairsp;&hairsp;&hairsp;format&emsp13;shown&thinsp;&hairsp;below.&hairsp;&hairsp;&hairsp;&hairsp;The&hairsp;&#x2006;exact&hairsp;&hairsp;&#x2006;meaning&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;these&hairsp;&#x2006;categories&hairsp;&hairsp;&hairsp;&hairsp;isn&rsquo;t&emsp13;that&thinsp;&hairsp;important&hairsp;&hairsp;&hairsp;&hairsp;for&hairsp;&#x2006;our&hairsp;&hairsp;&#x2006;purposes.&hairsp;&#x2006;Suffice&hairsp;&hairsp;&hairsp;&hairsp;it&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;say&emsp13;that&thinsp;&hairsp;each&hairsp;&hairsp;&hairsp;&hairsp;leaf&hairsp;&#x2006;node&hairsp;&hairsp;&#x2006;has&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;particular&hairsp;&#x2006;power&hairsp;&hairsp;&hairsp;&hairsp;consumption&emsp13;<em>for&thinsp;&hairsp;each&hairsp;&hairsp;&hairsp;&hairsp;category</em>.</p>
+<h3>Command-Line</h3>
+<p>All&hairsp;&#x2006;user&hairsp;&hairsp;&#x2006;input&hairsp;&#x2006;occurs&hairsp;&hairsp;&hairsp;&hairsp;via&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;command-line.&emsp13;The&thinsp;&hairsp;exact&hairsp;&hairsp;&hairsp;&hairsp;method&hairsp;&#x2006;of&hairsp;&hairsp;&#x2006;executing&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;program&hairsp;&#x2006;will&hairsp;&hairsp;&hairsp;&hairsp;depend&emsp13;on&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;language&hairsp;&#x2006;and&hairsp;&hairsp;&#x2006;build&hairsp;&#x2006;system,&hairsp;&hairsp;&hairsp;&hairsp;so&hairsp;&#x2006;here&rsquo;s&hairsp;&hairsp;&hairsp;&hairsp;what&emsp13;we&thinsp;&hairsp;mean&hairsp;&hairsp;&hairsp;&hairsp;first:</p>
+<table>
+<thead>
+<tr>
+<th>Language/Environment</th>
+<th>Command</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>Java, using <code>gradle run</code>:</td>
+<td><code>./gradlew run --args="</code><em>[arguments]</em><code>"</code></td>
+</tr>
+<tr>
+<td>Java, directly invoking a <code>jar</code> file:</td>
+<td><code>java -jar program.jar</code> <em>[arguments]</em></td>
+</tr>
+<tr>
+<td>C#, using Mono:</td>
+<td><code>mono program.exe</code> <em>[arguments]</em></td>
+</tr>
+<tr>
+<td>Python:</td>
+<td><code>python program.py</code> <em>[arguments]</em></td>
+</tr>
+<tr>
+<td>C++:</td>
+<td><code>./program</code> <em>[arguments]</em></td>
+</tr>
+</tbody>
+</table>
+<p>All&hairsp;&#x2006;user&hairsp;&hairsp;&#x2006;input&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;occur&hairsp;&#x2006;via&hairsp;&hairsp;&hairsp;&hairsp;this&emsp13;method.&thinsp;&hairsp;The&hairsp;&hairsp;&hairsp;&hairsp;user&hairsp;&#x2006;must&hairsp;&hairsp;&#x2006;supply&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;following:</p>
+<ul>
+<li>
+<p>Either&hairsp;&#x2006;&ldquo;<code>-g</code>&rdquo;&hairsp;&hairsp;&hairsp;&hairsp;for&emsp13;generate,&thinsp;&hairsp;or&hairsp;&hairsp;&hairsp;&hairsp;&ldquo;<code>-r</code>&rdquo;&hairsp;&#x2006;for&hairsp;&hairsp;&#x2006;read,&hairsp;&#x2006;where&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;latter&hairsp;&hairsp;&hairsp;&hairsp;must&emsp13;be&thinsp;&hairsp;followed&hairsp;&hairsp;&hairsp;&hairsp;by&hairsp;&#x2006;an&hairsp;&hairsp;&#x2006;input&hairsp;&#x2006;filename.</p>
+</li>
+<li>
+<p>Either&hairsp;&hairsp;&hairsp;&hairsp;&ldquo;<code>-d</code>&rdquo;&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;display,&emsp13;or&thinsp;&hairsp;&ldquo;<code>-w</code>&rdquo;&hairsp;&hairsp;&hairsp;&hairsp;for&hairsp;&#x2006;write,&hairsp;&hairsp;&#x2006;where&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;latter&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;be&emsp13;followed&thinsp;&hairsp;by&hairsp;&hairsp;&hairsp;&hairsp;an&hairsp;&#x2006;output&hairsp;&hairsp;&#x2006;filename&hairsp;&#x2006;(which&hairsp;&hairsp;&hairsp;&hairsp;cannot&hairsp;&#x2006;be&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;same&thinsp;&hairsp;as&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;input&hairsp;&hairsp;&#x2006;filename,&hairsp;&#x2006;if&hairsp;&hairsp;&hairsp;&hairsp;provided).</p>
+</li>
+</ul>
+<p>So,&hairsp;&#x2006;if&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;application&thinsp;&hairsp;is&hairsp;&hairsp;&hairsp;&hairsp;Java&hairsp;&#x2006;based,&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;we&hairsp;&hairsp;&hairsp;&hairsp;want&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;use&emsp13;Gradle,&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;following&hairsp;&#x2006;are&hairsp;&hairsp;&#x2006;all&hairsp;&#x2006;valid&hairsp;&hairsp;&hairsp;&hairsp;means&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;invocation:</p>
+<div class="highlight"><pre><span></span><code>./gradlew run --args=&quot;-g -d&quot;
+./gradlew run --args=&quot;-g -w outputdata.csv&quot;
+./gradlew run --args=&quot;-r inputdata.csv -d&quot;
+./gradlew run --args=&quot;-r inputdata.csv -w outputdata.csv&quot;
+</code></pre></div>
+<p>It&emsp13;is&thinsp;&hairsp;an&hairsp;&hairsp;&hairsp;&hairsp;error&hairsp;&#x2006;if&hairsp;&hairsp;&#x2006;neither&hairsp;&#x2006;<code>-g</code>&hairsp;&hairsp;&hairsp;&hairsp;nor&hairsp;&#x2006;<code>-r</code>&hairsp;&hairsp;&hairsp;&hairsp;are&emsp13;provided,&thinsp;&hairsp;<em>or</em>&hairsp;&hairsp;&hairsp;&hairsp;if&hairsp;&#x2006;both&hairsp;&hairsp;&#x2006;are&hairsp;&#x2006;provided,&hairsp;&hairsp;&hairsp;&hairsp;or&hairsp;&#x2006;if&hairsp;&hairsp;&hairsp;&hairsp;<code>-r</code>&emsp13;is&thinsp;&hairsp;not&hairsp;&hairsp;&hairsp;&hairsp;followed&hairsp;&#x2006;by&hairsp;&hairsp;&#x2006;a&hairsp;&#x2006;filename.&hairsp;&hairsp;&hairsp;&hairsp;Similarly&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;<code>-d</code>&emsp13;and&thinsp;&hairsp;<code>-w</code>.&hairsp;&hairsp;&hairsp;&hairsp;(Optionally,&hairsp;&#x2006;you&hairsp;&hairsp;&#x2006;may&hairsp;&#x2006;allow&hairsp;&hairsp;&hairsp;&hairsp;<code>-d</code>/<code>-w</code>&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;be&emsp13;written&thinsp;&hairsp;before&hairsp;&hairsp;&hairsp;&hairsp;<code>-g</code>/<code>-r</code>.&hairsp;&#x2006;Or&hairsp;&hairsp;&#x2006;you&hairsp;&#x2006;can&hairsp;&hairsp;&hairsp;&hairsp;require&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;user&emsp13;to&thinsp;&hairsp;provide&hairsp;&hairsp;&hairsp;&hairsp;them&hairsp;&#x2006;in&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;order&hairsp;&hairsp;&hairsp;&hairsp;indicated&hairsp;&#x2006;above.)</p>
+<p>In&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;case&thinsp;&hairsp;of&hairsp;&hairsp;&hairsp;&hairsp;such&hairsp;&#x2006;an&hairsp;&hairsp;&#x2006;error,&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;program&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;say&emsp13;what&thinsp;&hairsp;went&hairsp;&hairsp;&hairsp;&hairsp;wrong.</p>
+<h3>Reading&hairsp;&#x2006;and&hairsp;&hairsp;&#x2006;Writing</h3>
+<p>If&hairsp;&#x2006;<code>-r</code>&hairsp;&hairsp;&hairsp;&hairsp;is&hairsp;&#x2006;given,&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;program&thinsp;&hairsp;must&hairsp;&hairsp;&hairsp;&hairsp;read&hairsp;&#x2006;and&hairsp;&hairsp;&#x2006;validate&hairsp;&#x2006;data&hairsp;&hairsp;&hairsp;&hairsp;from&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;file&emsp13;specified.&thinsp;&hairsp;If&hairsp;&hairsp;&hairsp;&hairsp;<code>-w</code>&hairsp;&#x2006;is&hairsp;&hairsp;&#x2006;given,&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;program&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;write&emsp13;its&thinsp;&hairsp;data&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;the&hairsp;&hairsp;&#x2006;(other)&hairsp;&#x2006;file&hairsp;&hairsp;&hairsp;&hairsp;specified.&hairsp;&#x2006;</p>
+<div class="admonition note">
+<p class="admonition-title">Note</p>
+<p>In&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;event&thinsp;&hairsp;that&hairsp;&hairsp;&hairsp;&hairsp;both&hairsp;&#x2006;<code>-r</code>&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;<code>-w</code>&hairsp;&hairsp;&hairsp;&hairsp;are&hairsp;&#x2006;given,&hairsp;&hairsp;&hairsp;&hairsp;both&emsp13;apply&thinsp;&hairsp;as&hairsp;&hairsp;&hairsp;&hairsp;normal;&hairsp;&#x2006;i.e.,&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;data&hairsp;&hairsp;&hairsp;&hairsp;should&hairsp;&#x2006;be&hairsp;&hairsp;&hairsp;&hairsp;read&emsp13;from&thinsp;&hairsp;one&hairsp;&hairsp;&hairsp;&hairsp;file&hairsp;&#x2006;and,&hairsp;&hairsp;&#x2006;<em>if&hairsp;&#x2006;valid</em>,&hairsp;&hairsp;&hairsp;&hairsp;written&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;another.&emsp13;The&thinsp;&hairsp;validation&hairsp;&hairsp;&hairsp;&hairsp;requirement&hairsp;&#x2006;means&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;data&hairsp;&hairsp;&hairsp;&hairsp;cannot&hairsp;&#x2006;just&hairsp;&hairsp;&hairsp;&hairsp;be&emsp13;blindly&thinsp;&hairsp;copied.</p>
+</div>
+<p>The&hairsp;&hairsp;&hairsp;&hairsp;same&hairsp;&#x2006;file&hairsp;&hairsp;&#x2006;format&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;be&hairsp;&#x2006;used&hairsp;&hairsp;&hairsp;&hairsp;for&emsp13;both&thinsp;&hairsp;reading&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;writing&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;data.&hairsp;&hairsp;&hairsp;&hairsp;The&hairsp;&#x2006;data&hairsp;&hairsp;&hairsp;&hairsp;file&emsp13;should&thinsp;&hairsp;contain&hairsp;&hairsp;&hairsp;&hairsp;one&hairsp;&#x2006;line&hairsp;&hairsp;&#x2006;per&hairsp;&#x2006;tree&hairsp;&hairsp;&hairsp;&hairsp;node:</p>
+<ul>
+<li>
+<p>The&hairsp;&#x2006;first&hairsp;&hairsp;&hairsp;&hairsp;line&emsp13;of&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;file&hairsp;&#x2006;specifies&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;name&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;root&emsp13;node:</p>
+<p><em>[name]</em></p>
+</li>
+<li>
+<p>A&thinsp;&hairsp;line&hairsp;&hairsp;&hairsp;&hairsp;representing&hairsp;&#x2006;a&hairsp;&hairsp;&#x2006;non-root,&hairsp;&#x2006;non-leaf&hairsp;&hairsp;&hairsp;&hairsp;node&hairsp;&#x2006;contains&hairsp;&hairsp;&hairsp;&hairsp;a&emsp13;name&thinsp;&hairsp;and&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;parent&hairsp;&hairsp;&#x2006;node&hairsp;&#x2006;name,&hairsp;&hairsp;&hairsp;&hairsp;separated&hairsp;&#x2006;by&hairsp;&hairsp;&hairsp;&hairsp;a&emsp13;comma:</p>
+<p><em>[name]</em><code>,</code><em>[parent-name]</em></p>
+<p>The&thinsp;&hairsp;parent&hairsp;&hairsp;&hairsp;&hairsp;node&hairsp;&#x2006;(which&hairsp;&hairsp;&#x2006;may&hairsp;&#x2006;or&hairsp;&hairsp;&hairsp;&hairsp;may&hairsp;&#x2006;not&hairsp;&hairsp;&hairsp;&hairsp;be&emsp13;the&thinsp;&hairsp;root)&hairsp;&hairsp;&hairsp;&hairsp;must&hairsp;&#x2006;be&hairsp;&hairsp;&#x2006;specified&hairsp;&#x2006;on&hairsp;&hairsp;&hairsp;&hairsp;an&hairsp;&#x2006;earlier&hairsp;&hairsp;&hairsp;&hairsp;line&emsp13;of&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;same&hairsp;&#x2006;file.</p>
+</li>
+<li>
+<p>For&hairsp;&hairsp;&#x2006;leaf&hairsp;&#x2006;nodes,&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;line&hairsp;&hairsp;&hairsp;&hairsp;contains&emsp13;the&thinsp;&hairsp;node&hairsp;&hairsp;&hairsp;&hairsp;name,&hairsp;&#x2006;parent&hairsp;&hairsp;&#x2006;node&hairsp;&#x2006;name,&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;power&emsp13;consumption&thinsp;&hairsp;for&hairsp;&hairsp;&hairsp;&hairsp;one&hairsp;&#x2006;or&hairsp;&hairsp;&#x2006;more&hairsp;&#x2006;categories:</p>
+<p><em>[name]</em><code>,</code><em>[parent-name]</em><code>,</code><em>[cat1]</em><code>=</code><em>[power1]</em><code>,</code><em>[cat2]</em><code>=</code><em>[power2]</em><code>,</code>&hellip;</p>
+<p>Each&hairsp;&hairsp;&hairsp;&hairsp;<em>[catN]</em>&hairsp;&#x2006;is&hairsp;&hairsp;&hairsp;&hairsp;an&emsp13;<em>abbreviation</em>&thinsp;&hairsp;of&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;power&hairsp;&hairsp;&#x2006;consumption&hairsp;&#x2006;category,&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;each&hairsp;&hairsp;&hairsp;&hairsp;<em>[powerN]</em>&emsp13;is&thinsp;&hairsp;a&hairsp;&hairsp;&hairsp;&hairsp;non-negative&hairsp;&#x2006;real&hairsp;&hairsp;&#x2006;number&hairsp;&#x2006;specifying&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;corresponding&hairsp;&hairsp;&hairsp;&hairsp;power&emsp13;consumption.&thinsp;&hairsp;The&hairsp;&hairsp;&hairsp;&hairsp;categories&hairsp;&#x2006;can&hairsp;&hairsp;&#x2006;be&hairsp;&#x2006;given&hairsp;&hairsp;&hairsp;&hairsp;in&hairsp;&#x2006;any&hairsp;&hairsp;&hairsp;&hairsp;order,&emsp13;and&thinsp;&hairsp;can&hairsp;&hairsp;&hairsp;&hairsp;also&hairsp;&#x2006;be&hairsp;&hairsp;&#x2006;omitted,&hairsp;&#x2006;in&hairsp;&hairsp;&hairsp;&hairsp;which&hairsp;&#x2006;case&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;power&thinsp;&hairsp;consumption&hairsp;&hairsp;&hairsp;&hairsp;is&hairsp;&#x2006;assumed&hairsp;&hairsp;&#x2006;to&hairsp;&#x2006;be&hairsp;&hairsp;&hairsp;&hairsp;zero&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;that&emsp13;category.</p>
+</li>
+</ul>
+<div class="admonition example">
+<p class="admonition-title">Example</p>
+<div class="highlight"><pre><span></span><code>city
+northside,city
+southside,city
+building1,northside,h=675.015,dm=550.8
+building2,southside,s=444.2,em=540.1,da=97.9
+building3,southside,ee=10956
+</code></pre></div>
+</div>
+<p>It&thinsp;&hairsp;is&hairsp;&hairsp;&hairsp;&hairsp;an&hairsp;&#x2006;error&hairsp;&hairsp;&#x2006;if&hairsp;&#x2006;an&hairsp;&hairsp;&hairsp;&hairsp;input&hairsp;&#x2006;file&hairsp;&hairsp;&hairsp;&hairsp;does&emsp13;not&thinsp;&hairsp;exist&hairsp;&hairsp;&hairsp;&hairsp;or&hairsp;&#x2006;is&hairsp;&hairsp;&#x2006;not&hairsp;&#x2006;in&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;expected&hairsp;&hairsp;&hairsp;&hairsp;format,&emsp13;or&thinsp;&hairsp;if&hairsp;&hairsp;&hairsp;&hairsp;some&hairsp;&#x2006;storage-related&hairsp;&hairsp;&#x2006;error&hairsp;&#x2006;occurs&hairsp;&hairsp;&hairsp;&hairsp;during&hairsp;&#x2006;either&hairsp;&hairsp;&hairsp;&hairsp;reading&emsp13;or&thinsp;&hairsp;writing.&hairsp;&hairsp;&hairsp;&hairsp;In&hairsp;&#x2006;such&hairsp;&hairsp;&#x2006;cases,&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;program&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;<em>gracefully</em>&emsp13;exit&thinsp;&hairsp;with&hairsp;&hairsp;&hairsp;&hairsp;an&hairsp;&#x2006;appropriate&hairsp;&hairsp;&#x2006;error&hairsp;&#x2006;message.</p>
+<h3>Random&hairsp;&hairsp;&hairsp;&hairsp;Generation</h3>
+<p>If&hairsp;&#x2006;<code>-g</code>&hairsp;&hairsp;&hairsp;&hairsp;is&emsp13;given,&thinsp;&hairsp;the&hairsp;&hairsp;&hairsp;&hairsp;entire&hairsp;&#x2006;tree&hairsp;&hairsp;&#x2006;must&hairsp;&#x2006;be&hairsp;&hairsp;&hairsp;&hairsp;auto-generated.&hairsp;&#x2006;The&hairsp;&hairsp;&hairsp;&hairsp;method&emsp13;for&thinsp;&hairsp;doing&hairsp;&hairsp;&hairsp;&hairsp;this&hairsp;&#x2006;is&hairsp;&hairsp;&#x2006;simplistic,&hairsp;&#x2006;and&hairsp;&hairsp;&hairsp;&hairsp;does&hairsp;&#x2006;<em>not</em>&hairsp;&hairsp;&hairsp;&hairsp;reflect&emsp13;the&thinsp;&hairsp;limits&hairsp;&hairsp;&hairsp;&hairsp;on&hairsp;&#x2006;what&hairsp;&hairsp;&#x2006;a&hairsp;&#x2006;tree&hairsp;&hairsp;&hairsp;&hairsp;can&hairsp;&#x2006;look&hairsp;&hairsp;&hairsp;&hairsp;like&emsp13;in&thinsp;&hairsp;general.</p>
+<ol>
+<li>Generate&hairsp;&hairsp;&hairsp;&hairsp;a&hairsp;&#x2006;random&hairsp;&hairsp;&#x2006;tree&hairsp;&#x2006;depth&hairsp;&hairsp;&hairsp;&hairsp;between&hairsp;&#x2006;1&hairsp;&hairsp;&hairsp;&hairsp;and&emsp13;5&thinsp;&hairsp;(inclusive,&hairsp;&hairsp;&hairsp;&hairsp;where&hairsp;&#x2006;1&hairsp;&hairsp;&#x2006;means&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;tree&hairsp;&#x2006;consists&hairsp;&hairsp;&hairsp;&hairsp;only&emsp13;of&thinsp;&hairsp;a&hairsp;&hairsp;&hairsp;&hairsp;root&hairsp;&#x2006;node).</li>
+<li>Generate&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;root&hairsp;&hairsp;&hairsp;&hairsp;node,&hairsp;&#x2006;and&hairsp;&hairsp;&hairsp;&hairsp;generate&emsp13;a&thinsp;&hairsp;name&hairsp;&hairsp;&hairsp;&hairsp;for&hairsp;&#x2006;it.</li>
+<li>Until&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;tree&hairsp;&hairsp;&hairsp;&hairsp;has&hairsp;&#x2006;reached&hairsp;&hairsp;&hairsp;&hairsp;the&emsp13;required&thinsp;&hairsp;depth:<ul>
+<li>For&hairsp;&hairsp;&hairsp;&hairsp;each&hairsp;&#x2006;existing&hairsp;&hairsp;&#x2006;node:<ul>
+<li>Generate&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;random&hairsp;&#x2006;number&hairsp;&hairsp;&hairsp;&hairsp;of&emsp13;child&thinsp;&hairsp;nodes,&hairsp;&hairsp;&hairsp;&hairsp;between&hairsp;&#x2006;2&hairsp;&hairsp;&#x2006;and&hairsp;&#x2006;5&hairsp;&hairsp;&hairsp;&hairsp;(inclusive).</li>
+<li>Generate&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;name&emsp13;for&thinsp;&hairsp;each&hairsp;&hairsp;&hairsp;&hairsp;new&hairsp;&#x2006;node.</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>For&hairsp;&hairsp;&#x2006;each&hairsp;&#x2006;leaf&hairsp;&hairsp;&hairsp;&hairsp;node,&hairsp;&#x2006;and&hairsp;&hairsp;&hairsp;&hairsp;for&emsp13;each&thinsp;&hairsp;power&hairsp;&hairsp;&hairsp;&hairsp;consumption&hairsp;&#x2006;category,&hairsp;&hairsp;&#x2006;generate&hairsp;&#x2006;a&hairsp;&hairsp;&hairsp;&hairsp;random&hairsp;&#x2006;number&hairsp;&hairsp;&hairsp;&hairsp;between&emsp13;0.0&thinsp;&hairsp;and&hairsp;&hairsp;&hairsp;&hairsp;1000.0.</li>
+</ol>
+<p>The&hairsp;&#x2006;names&hairsp;&hairsp;&#x2006;of&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;nodes&hairsp;&#x2006;do&hairsp;&hairsp;&hairsp;&hairsp;not&emsp13;necessarily&thinsp;&hairsp;need&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;be&hairsp;&hairsp;&#x2006;randomly&hairsp;&#x2006;chosen,&hairsp;&hairsp;&hairsp;&hairsp;but&hairsp;&#x2006;must&hairsp;&hairsp;&hairsp;&hairsp;be&emsp13;unique.</p>
+<h3>Displaying</h3>
+<p>If&thinsp;&hairsp;<code>-d</code>&hairsp;&hairsp;&hairsp;&hairsp;is&hairsp;&#x2006;given,&hairsp;&hairsp;&#x2006;two&hairsp;&#x2006;things&hairsp;&hairsp;&hairsp;&hairsp;must&hairsp;&#x2006;happen:</p>
+<ol>
+<li>
+<p>The&hairsp;&hairsp;&hairsp;&hairsp;tree&emsp13;must&thinsp;&hairsp;be&hairsp;&hairsp;&hairsp;&hairsp;displayed&hairsp;&#x2006;(after&hairsp;&hairsp;&#x2006;it&hairsp;&#x2006;has&hairsp;&hairsp;&hairsp;&hairsp;been&hairsp;&#x2006;read&hairsp;&hairsp;&hairsp;&hairsp;in&emsp13;or&thinsp;&hairsp;generated).</p>
+<p>To&hairsp;&hairsp;&hairsp;&hairsp;display&hairsp;&#x2006;the&hairsp;&hairsp;&#x2006;tree,&hairsp;&#x2006;output&hairsp;&hairsp;&hairsp;&hairsp;the&hairsp;&#x2006;names&hairsp;&hairsp;&hairsp;&hairsp;of&emsp13;the&thinsp;&hairsp;nodes,&hairsp;&hairsp;&hairsp;&hairsp;one&hairsp;&#x2006;per&hairsp;&hairsp;&#x2006;line,&hairsp;&#x2006;with&hairsp;&hairsp;&hairsp;&hairsp;indentation&hairsp;&#x2006;used&hairsp;&hairsp;&hairsp;&hairsp;to&emsp13;indicate&thinsp;&hairsp;which&hairsp;&hairsp;&hairsp;&hairsp;node&hairsp;&#x2006;is&hairsp;&hairsp;&#x2006;a&hairsp;&#x2006;child&hairsp;&hairsp;&hairsp;&hairsp;of&hairsp;&#x2006;which&hairsp;&hairsp;&hairsp;&hairsp;other&emsp13;node.&thinsp;&hairsp;The&hairsp;&hairsp;&hairsp;&hairsp;root&hairsp;&#x2006;node&hairsp;&hairsp;&#x2006;has&hairsp;&#x2006;no&hairsp;&hairsp;&hairsp;&hairsp;indentation.</p>
+<div class="admonition example">
+<p class="admonition-title">Example&hairsp;&#x2006;(based&hairsp;&hairsp;&hairsp;&hairsp;on&emsp13;the&thinsp;&hairsp;file&hairsp;&hairsp;&hairsp;&hairsp;above)</p>
+<div class="highlight"><pre><span></span><code>city
+    northside
+        building1
+    southside
+        building2
+        building3
+</code></pre></div>
+</div>
+<p>(If&hairsp;&#x2006;you&hairsp;&hairsp;&#x2006;wish,&hairsp;&#x2006;you&hairsp;&hairsp;&hairsp;&hairsp;may&hairsp;&#x2006;use&hairsp;&hairsp;&hairsp;&hairsp;ASCII/Unicode&emsp13;line-drawing&thinsp;&hairsp;characters&hairsp;&hairsp;&hairsp;&hairsp;to&hairsp;&#x2006;draw&hairsp;&hairsp;&#x2006;tree-like&hairsp;&#x2006;lines&hairsp;&hairsp;&hairsp;&hairsp;from&hairsp;&#x2006;parent&hairsp;&hairsp;&hairsp;&hairsp;to&emsp13;child&thinsp;&hairsp;nodes.)</p>
+</li>
+<li>
+<p>The&hairsp;&hairsp;&hairsp;&hairsp;<em>total</em>&hairsp;&#x2006;power&hairsp;&hairsp;&#x2006;consumption&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;each&hairsp;&#x2006;category&hairsp;&hairsp;&hairsp;&hairsp;(across&emsp13;the&thinsp;&hairsp;whole&hairsp;&hairsp;&hairsp;&hairsp;city)&hairsp;&#x2006;must&hairsp;&hairsp;&#x2006;be&hairsp;&#x2006;calculated&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;displayed.</p>
+<p>For&hairsp;&hairsp;&hairsp;&hairsp;a&emsp13;given&thinsp;&hairsp;category,&hairsp;&hairsp;&hairsp;&hairsp;you&hairsp;&#x2006;can&hairsp;&hairsp;&#x2006;calculate&hairsp;&#x2006;the&hairsp;&hairsp;&hairsp;&hairsp;total&hairsp;&#x2006;power&hairsp;&hairsp;&hairsp;&hairsp;consumption&emsp13;by&thinsp;&hairsp;simply&hairsp;&hairsp;&hairsp;&hairsp;adding&hairsp;&#x2006;up&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;power&hairsp;&hairsp;&hairsp;&hairsp;consumption&hairsp;&#x2006;of&hairsp;&hairsp;&hairsp;&hairsp;each&emsp13;leaf&thinsp;&hairsp;node&hairsp;&hairsp;&hairsp;&hairsp;for&hairsp;&#x2006;that&hairsp;&hairsp;&#x2006;category.</p>
+<div class="admonition example">
+<p class="admonition-title">Example&hairsp;&#x2006;(not&hairsp;&hairsp;&hairsp;&hairsp;based&hairsp;&#x2006;on&hairsp;&hairsp;&hairsp;&hairsp;any&emsp13;previous&thinsp;&hairsp;example)</p>
+<div class="highlight"><pre><span></span><code>Weekday morning   : 2005.88
+Weekday afternoon : 4140.7
+Weekday evening   : 5539.9
+Weekend morning   : 3221.0
+Weekend afternoon : 5155.2
+Weekend evening   : 7883.2
+Heatwave          : 12270.8
+Special event     : 6887.5
+</code></pre></div>
+</div>
+</li>
+</ol>
+<h2>Academic&hairsp;&hairsp;&hairsp;&hairsp;Integrity</h2>
+<p>Please&hairsp;&#x2006;see&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;<em>Coding&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;Academic&hairsp;&hairsp;&hairsp;&hairsp;Integrity&emsp13;Guidelines</em>&thinsp;&hairsp;on&hairsp;&hairsp;&hairsp;&hairsp;Blackboard.</p>
+<p>In&hairsp;&#x2006;summary,&hairsp;&hairsp;&#x2006;this&hairsp;&#x2006;is&hairsp;&hairsp;&hairsp;&hairsp;an&hairsp;&#x2006;assessable&hairsp;&hairsp;&hairsp;&hairsp;task.&emsp13;If&thinsp;&hairsp;you&hairsp;&hairsp;&hairsp;&hairsp;use&hairsp;&#x2006;someone&hairsp;&hairsp;&#x2006;else&rsquo;s&hairsp;&#x2006;work&hairsp;&hairsp;&hairsp;&hairsp;or&hairsp;&#x2006;assistance&hairsp;&hairsp;&hairsp;&hairsp;to&emsp13;help&thinsp;&hairsp;complete&hairsp;&hairsp;&hairsp;&hairsp;part&hairsp;&#x2006;of&hairsp;&hairsp;&#x2006;the&hairsp;&#x2006;assignment,&hairsp;&hairsp;&hairsp;&hairsp;where&hairsp;&#x2006;it&rsquo;s&hairsp;&hairsp;&hairsp;&hairsp;intended&emsp13;that&thinsp;&hairsp;you&hairsp;&hairsp;&hairsp;&hairsp;complete&hairsp;&#x2006;it&hairsp;&hairsp;&#x2006;yourself,&hairsp;&#x2006;you&hairsp;&hairsp;&hairsp;&hairsp;will&hairsp;&#x2006;have&hairsp;&hairsp;&hairsp;&hairsp;compromised&emsp13;the&thinsp;&hairsp;assessment.&hairsp;&hairsp;&hairsp;&hairsp;You&hairsp;&#x2006;will&hairsp;&hairsp;&#x2006;not&hairsp;&#x2006;receive&hairsp;&hairsp;&hairsp;&hairsp;marks&hairsp;&#x2006;for&hairsp;&hairsp;&hairsp;&hairsp;any&emsp13;parts&thinsp;&hairsp;of&hairsp;&hairsp;&hairsp;&hairsp;your&hairsp;&#x2006;submission&hairsp;&hairsp;&#x2006;that&hairsp;&#x2006;are&hairsp;&hairsp;&hairsp;&hairsp;not&hairsp;&#x2006;your&hairsp;&hairsp;&hairsp;&hairsp;own&emsp13;original&thinsp;&hairsp;work.&hairsp;&hairsp;&hairsp;&hairsp;Further,&hairsp;&#x2006;if&hairsp;&hairsp;&#x2006;you&hairsp;&#x2006;do&hairsp;&hairsp;&hairsp;&hairsp;not&hairsp;&#x2006;<em>reference</em>&hairsp;&hairsp;&hairsp;&hairsp;any&emsp13;external&thinsp;&hairsp;sources&hairsp;&hairsp;&hairsp;&hairsp;that&hairsp;&#x2006;you&hairsp;&hairsp;&#x2006;use,&hairsp;&#x2006;you&hairsp;&hairsp;&hairsp;&hairsp;are&hairsp;&#x2006;committing&hairsp;&hairsp;&hairsp;&hairsp;plagiarism&emsp13;and/or&thinsp;&hairsp;collusion,&hairsp;&hairsp;&hairsp;&hairsp;and&hairsp;&#x2006;penalties&hairsp;&hairsp;&#x2006;for&hairsp;&#x2006;academic&hairsp;&hairsp;&hairsp;&hairsp;misconduct&hairsp;&#x2006;may&hairsp;&hairsp;&hairsp;&hairsp;apply.</p>
+<p>Curtin&emsp13;also&thinsp;&hairsp;provides&hairsp;&hairsp;&hairsp;&hairsp;general&hairsp;&#x2006;advice&hairsp;&hairsp;&#x2006;on&hairsp;&#x2006;academic&hairsp;&hairsp;&hairsp;&hairsp;integrity&hairsp;&#x2006;at&hairsp;&hairsp;&hairsp;&hairsp;<a href="http://academicintegrity.curtin.edu.au">academicintegrity.curtin.edu.au</a>.</p>
+<p>The&emsp13;unit&thinsp;&hairsp;coordinator&hairsp;&hairsp;&hairsp;&hairsp;may&hairsp;&#x2006;require&hairsp;&hairsp;&#x2006;you&hairsp;&#x2006;to&hairsp;&hairsp;&hairsp;&hairsp;provide&hairsp;&#x2006;an&hairsp;&hairsp;&hairsp;&hairsp;oral&emsp13;justification&thinsp;&hairsp;of,&hairsp;&hairsp;&hairsp;&hairsp;or&hairsp;&#x2006;to&hairsp;&hairsp;&#x2006;answer&hairsp;&#x2006;questions&hairsp;&hairsp;&hairsp;&hairsp;about,&hairsp;&#x2006;any&hairsp;&hairsp;&hairsp;&hairsp;piece&emsp13;of&thinsp;&hairsp;written&hairsp;&hairsp;&hairsp;&hairsp;work&hairsp;&#x2006;submitted&hairsp;&hairsp;&#x2006;in&hairsp;&#x2006;this&hairsp;&hairsp;&hairsp;&hairsp;unit.&hairsp;&#x2006;Your&hairsp;&hairsp;&hairsp;&hairsp;response(s)&emsp13;may&thinsp;&hairsp;be&hairsp;&hairsp;&hairsp;&hairsp;referred&hairsp;&#x2006;to&hairsp;&hairsp;&#x2006;as&hairsp;&#x2006;evidence&hairsp;&hairsp;&hairsp;&hairsp;in&hairsp;&#x2006;an&hairsp;&hairsp;&hairsp;&hairsp;academic&emsp13;misconduct&thinsp;&hairsp;inquiry.&hairsp;&hairsp;&hairsp;&hairsp;</p>
+            </body>
+            </html>
